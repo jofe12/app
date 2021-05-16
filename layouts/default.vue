@@ -12,7 +12,7 @@
           :link="{
             name: 'Dashboard',
             icon: 'tim-icons icon-laptop',
-            path: '/dashboard'
+            path: '/dashboard',
           }"
         >
         </sidebar-item>
@@ -21,7 +21,7 @@
           :link="{
             name: 'Devices',
             icon: 'tim-icons icon-light-3',
-            path: '/devices'
+            path: '/devices',
           }"
         >
         </sidebar-item>
@@ -30,7 +30,7 @@
           :link="{
             name: 'Alarms',
             icon: 'tim-icons icon-bell-55',
-            path: '/alarms'
+            path: '/alarms',
           }"
         >
         </sidebar-item>
@@ -39,7 +39,7 @@
           :link="{
             name: 'Templates',
             icon: 'tim-icons icon-atom',
-            path: '/templates'
+            path: '/templates',
           }"
         >
         </sidebar-item>
@@ -97,11 +97,11 @@ export default {
     DashboardContent,
     SlideYDownTransition,
     ZoomCenterTransition,
-    SidebarShare
+    SidebarShare,
   },
   data() {
     return {
-      sidebarBackground: "primary", //vue|blue|orange|green|red|primary
+      sidebarBackground: "vue", //vue|blue|orange|green|red|primary
       client: null,
       options: {
         host: process.env.mqtt_host,
@@ -118,14 +118,14 @@ export default {
           "_" +
           Math.floor(Math.random() * 1000000 + 1),
         username: "",
-        password: ""
-      }
+        password: "",
+      },
     };
   },
   computed: {
     isFullScreenRoute() {
       return this.$route.path === "/maps/full-screen";
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("getNotifications");
@@ -143,8 +143,8 @@ export default {
       try {
         const axiosHeaders = {
           headers: {
-            token: this.$store.state.auth.token
-          }
+            token: this.$store.state.auth.token,
+          },
         };
 
         const credentials = await this.$axios.post(
@@ -177,8 +177,8 @@ export default {
       try {
         const axiosHeaders = {
           headers: {
-            token: this.$store.state.auth.token
-          }
+            token: this.$store.state.auth.token,
+          },
         };
 
         const credentials = await this.$axios.post(
@@ -193,9 +193,7 @@ export default {
           this.client.options.password = credentials.data.password;
         }
       } catch (error) {
-
         console.log(error);
-
 
         if (error.response.status == 401) {
           console.log("NO VALID TOKEN");
@@ -206,7 +204,6 @@ export default {
 
           window.location.href = "/login";
         }
-        
       }
     },
 
@@ -220,13 +217,11 @@ export default {
         this.$store.state.auth.userData._id + "/+/+/notif";
 
       const connectUrl =
-        process.env.mqtt_prefix + 
+        process.env.mqtt_prefix +
         this.options.host +
         ":" +
         this.options.port +
         this.options.endpoint;
-
-        
 
       try {
         this.client = mqtt.connect(connectUrl, this.options);
@@ -241,7 +236,7 @@ export default {
         console.log("Connection succeeded!");
 
         //SDATA SUBSCRIBE
-        this.client.subscribe(deviceSubscribeTopic, { qos: 0 }, err => {
+        this.client.subscribe(deviceSubscribeTopic, { qos: 0 }, (err) => {
           if (err) {
             console.log("Error in DeviceSubscription");
             return;
@@ -251,7 +246,7 @@ export default {
         });
 
         //NOTIF SUBSCRIBE
-        this.client.subscribe(notifSubscribeTopic, { qos: 0 }, err => {
+        this.client.subscribe(notifSubscribeTopic, { qos: 0 }, (err) => {
           if (err) {
             console.log("Error in NotifSubscription");
             return;
@@ -261,16 +256,16 @@ export default {
         });
       });
 
-      this.client.on("error", error => {
+      this.client.on("error", (error) => {
         console.log("Connection failed", error);
       });
 
-      this.client.on("reconnect", error => {
+      this.client.on("reconnect", (error) => {
         console.log("reconnecting:", error);
         this.getMqttCredentialsForReconnection();
       });
 
-      this.client.on("disconnect", error => {
+      this.client.on("disconnect", (error) => {
         console.log("MQTT disconnect EVENT FIRED:", error);
       });
 
@@ -286,7 +281,7 @@ export default {
             this.$notify({
               type: "danger",
               icon: "tim-icons icon-alert-circle-exc",
-              message: message.toString()
+              message: message.toString(),
             });
             this.$store.dispatch("getNotifications");
             return;
@@ -299,7 +294,7 @@ export default {
         }
       });
 
-      $nuxt.$on("mqtt-sender", toSend => {
+      $nuxt.$on("mqtt-sender", (toSend) => {
         this.client.publish(toSend.topic, JSON.stringify(toSend.msg));
       });
     },
@@ -322,8 +317,8 @@ export default {
       } else {
         docClasses.add("perfect-scrollbar-off");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
