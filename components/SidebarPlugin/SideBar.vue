@@ -2,7 +2,7 @@
   <div class="sidebar" :data="backgroundColor">
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
       <div class="logo">
-        <a href="XXXXXXX" class="simple-text logo-mini">
+        <a href="https://google.com" class="simple-text logo-mini">
           <img
             src="http://demos.creative-tim.com/nuxt-black-dashboard-pro/img/icon-nuxt.svg"
             alt="app-logo"
