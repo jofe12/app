@@ -1,7 +1,12 @@
 <template>
   <div class="sidebar" :data="backgroundColor">
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
-      <div class="logo">icon: 'tim-icons icon-laptop'</div>
+      <div class="logo">
+        <div class="font-icon-detail">
+          <i class="tim-icons icon-single-02 text-dark"></i>
+          <p>icon-single-02</p>
+        </div>
+      </div>
       <slot></slot>
       <ul class="nav">
         <slot name="links">
