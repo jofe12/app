@@ -3,7 +3,7 @@
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
       <div class="logo">
         <a href="XXXXXXX" class="simple-text logo-mini">
-          <img src="XXXXX" alt="app-logo" />
+          <img src="icon-atom" alt="app-logo" />
         </a>
         <a href="XXXXX" class="simple-text logo-normal">
           {{ title }}
