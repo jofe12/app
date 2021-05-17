@@ -2,7 +2,7 @@
   <div class="sidebar" :data="backgroundColor">
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
       <div class="logo">
-        <a href="XXXXXXX" class="simple-text logo-mini">
+        <a href="icon-atom" class="simple-text logo-mini">
           <img src="icon-atom" alt="app-logo" />
         </a>
         <a href="XXXXX" class="simple-text logo-normal">
