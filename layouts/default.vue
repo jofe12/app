@@ -5,7 +5,7 @@
     <side-bar
       :background-color="sidebarBackground"
       short-title="oneline"
-      title="193.46.199.60"
+      title="jfda"
     >
       <template slot-scope="props" slot="links">
         <sidebar-item
