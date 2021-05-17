@@ -1,14 +1,7 @@
 <template>
   <div class="sidebar" :data="backgroundColor">
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
-      <div class="logo">
-        <a href="" class="simple-text logo-mini">
-          icon: 'tim-icons icon-laptop',
-        </a>
-        <a href="XXXXX" class="simple-text logo-normal">
-          {{ title }}
-        </a>
-      </div>
+      <div class="logo">icon: 'tim-icons icon-laptop'</div>
       <slot></slot>
       <ul class="nav">
         <slot name="links">
