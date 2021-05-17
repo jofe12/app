@@ -1,10 +1,28 @@
 <template>
   <div class="sidebar" :data="backgroundColor">
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
-      <div class="font-icon-detail">
-        <i class="tim-icons icon-single-02 text-dark"></i>
-        <p>icon-single-02</p>
+      <div class="logo">
+        <a href="XXXXXXX" class="simple-text logo-mini">
+          <img
+            src="http://demos.creative-tim.com/nuxt-black-dashboard-pro/img/icon-nuxt.svg"
+            alt="app-logo"
+          />
+        </a>
+        <a href="XXXXX" class="simple-text logo-normal">
+          {{ title }}
+        </a>
       </div>
+      <slot></slot>
+      <ul class="nav">
+        <slot name="links">
+          <sidebar-item
+            v-for="(link, index) in sidebarLinks"
+            :key="link.name + index"
+            :link="link"
+          >
+          </sidebar-item>
+        </slot>
+      </ul>
     </div>
   </div>
 </template>
